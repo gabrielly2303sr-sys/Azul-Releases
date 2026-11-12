@@ -1,0 +1,77 @@
+{
+  "name": "azul-estudo",
+  "version": "0.2.7",
+  "description": "Organizador de estudos com Pomodoro, matérias, tarefas e mapas mentais para Linux e Windows.",
+  "main": "src/main.js",
+  "author": "Azul Estudo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux AppImage",
+    "dist:linux": "electron-builder --linux AppImage",
+    "dist:windows": "electron-builder --win nsis",
+    "dist:all": "electron-builder --linux AppImage --win nsis",
+    "publish:github": "node scripts/publish-github.cjs",
+    "verify:release": "node tests/verify-desktop-release.cjs",
+    "dist:dir": "electron-builder --linux dir",
+    "test": "node tests/verify-migration.cjs && node tests/verify-map-editor.cjs && node tests/verify-desktop-release.cjs"
+  },
+  "devDependencies": {
+    "electron": "^36.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "dev.azulestudo.desktop",
+    "productName": "Azul Estudo",
+    "asar": true,
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "assets/icon.png",
+      "assets/icon.ico",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Education",
+      "icon": "assets/icon.png",
+      "synopsis": "Seu espaço pessoal de estudos",
+      "artifactName": "Azul-Estudo-${version}-${arch}.${ext}"
+    },
+    "artifactName": "Azul-Estudo-${version}-${arch}.${ext}",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "Azul-Estudo-${version}-${arch}-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Azul Estudo",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "gabrielly2303sr-sys",
+        "repo": "Azul-Releases",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  }
+}

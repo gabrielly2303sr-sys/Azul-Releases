@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; img-src 'self' data: https: azul-asset:; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+  <title>Azul Estudo</title>
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar glass">
+      <div class="brand-row">
+        <div class="brand-mark"><span>✦</span></div>
+        <div><div class="brand-name">azul<span>.</span></div><div class="brand-caption">seu espaço de estudos</div></div>
+      </div>
+      <div class="profile-mini" data-page="profile" role="button" tabindex="0" title="Abrir perfil">
+        <div class="avatar" id="sidebar-avatar">A</div>
+        <div class="profile-copy"><strong id="sidebar-profile-name">Meu cantinho</strong><span id="rank-mini">Bronze · 0 XP</span></div>
+        <button class="icon-button" id="settings-button" title="Configurações">⚙</button>
+      </div>
+      <div class="nav-label">ESPAÇO DE ESTUDO</div>
+      <nav class="main-nav">
+        <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span>Visão geral</button>
+        <button class="nav-item" data-page="subjects"><span class="nav-icon">▤</span>Minhas matérias <span class="nav-count" id="subject-count">0</span></button>
+        <button class="nav-item" data-page="routine"><span class="nav-icon">☑</span>Rotina & tarefas</button>
+        <button class="nav-item" data-page="focus"><span class="nav-icon">◷</span>Modo foco</button>
+        <button class="nav-item" data-page="work"><span class="nav-icon">▦</span>Trabalho</button>
+        <button class="nav-item" data-page="mindmap"><span class="nav-icon">⌘</span>Mapa mental</button>
+        <button class="nav-item" data-page="profile"><span class="nav-icon">◉</span>Meu perfil</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="streak-card">
+          <div class="streak-top"><span>✧ Seu ritmo</span><span class="streak-flame">🔥</span></div>
+          <div class="streak-number" id="streak-number">0 dias</div>
+          <div class="streak-sub">Um pouquinho todo dia faz diferença.</div>
+          <div class="streak-track"><span id="streak-fill"></span></div>
+        </div>
+        <div class="sidebar-foot"><span class="status-dot"></span> Seus dados ficam neste dispositivo</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumbs"><span>Meu espaço</span><b>/</b><strong id="breadcrumb-current">Visão geral</strong></div>
+        <div class="top-actions"><span class="today-label" id="today-label"></span><button class="top-avatar" id="top-avatar" data-page="profile" title="Abrir perfil">A</button></div>
+      </header>
+      <div class="page-content" id="page-content"></div>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+  <script src="app.js"></script>
+</body>
+</html>
